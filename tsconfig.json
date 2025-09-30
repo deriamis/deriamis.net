@@ -6,5 +6,17 @@
   ],
   "exclude": [
     "dist"
-  ]
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@icons/*": ["src/icons/*"],
+      "@types": ["src/types/index.ts"],
+      "@config": ["src/config/index.ts"]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
 }

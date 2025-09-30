@@ -1,27 +1,71 @@
 {
-	"name": "deriamis-net",
-	"type": "module",
-	"version": "0.0.1",
-	"scripts": {
-		"astro": "astro",
-		"studiocms": "studiocms",
-		"db:push": "astro db push --remote",
-		"dev": "astro dev --remote",
-		"build": "astro build --remote",
-		"preview": "astro preview --remote"
-	},
-	"devDependencies": {
-		"@types/node": "^22.13.5",
-		"typescript": "^5.9.2"
-	},
-	"dependencies": {
-		"@astrojs/db": "^0.18.0",
-		"@astrojs/node": "^9.4.4",
-		"@studiocms/blog": "^0.1.0-beta.27",
-		"@studiocms/devapps": "^0.1.0-beta.27",
-		"@studiocms/md": "^0.1.0-beta.27",
-		"astro": "^5.14.1",
-		"sharp": "^0.34.3",
-		"studiocms": "^0.1.0-beta.27"
-	}
+  "name": "deriamis-net",
+  "type": "module",
+  "version": "0.0.1",
+  "license": "MIT",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "astro": "astro",
+    "studiocms": "studiocms",
+    "db:push": "astro db push --remote",
+    "dev": "astro dev --remote",
+    "test": "astro check",
+    "build": "astro check && astro build --remote",
+    "preview": "astro preview --remote"
+  },
+  "devDependencies": {
+    "@astrojs/mdx": "^4.3.6",
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/tailwind": "^6.0.2",
+    "@types/node": "^22.13.5",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.14"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/db": "^0.18.0",
+    "@astrojs/markdown-remark": "^6.3.7",
+    "@astrojs/node": "^9.4.4",
+    "@astrojs/partytown": "^2.1.4",
+    "@astrojs/react": "^4.4.0",
+    "@effect/cli": "^0.69.2",
+    "@effect/cluster": "^0.48.2",
+    "@effect/experimental": "^0.54.6",
+    "@effect/platform": "^0.90.10",
+    "@effect/platform-node": "^0.96.1",
+    "@effect/printer": "^0.45.0",
+    "@effect/printer-ansi": "^0.45.0",
+    "@effect/rpc": "^0.69.1",
+    "@effect/sql": "^0.44.2",
+    "@effect/typeclass": "^0.36.0",
+    "@effect/workflow": "^0.9.6",
+    "@fontsource-variable/gabarito": "^5.2.8",
+    "@fontsource/be-vietnam-pro": "^5.2.8",
+    "@libsql/client": "^0.15.10",
+    "@sentry/astro": "^10.16.0",
+    "@studiocms/blog": "^0.1.0-beta.27",
+    "@studiocms/devapps": "^0.1.0-beta.27",
+    "@studiocms/html": "^0.1.0-beta.27",
+    "@studiocms/markdoc": "^0.1.0-beta.27",
+    "@studiocms/md": "^0.1.0-beta.27",
+    "@studiocms/mdx": "^0.1.0-beta.27",
+    "@tailwindcss/vite": "^4.1.13",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "astro": "^5.14.1",
+    "astro-vtbot": "^2.1.8",
+    "drizzle-orm": "^0.42.0",
+    "effect": "^3.18.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "sharp": "^0.34.3",
+    "studiocms": "^0.1.0-beta.27",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2",
+    "vite": "^6.3.6"
+  },
+  "packageManager": "yarn@1.22.22"
 }
