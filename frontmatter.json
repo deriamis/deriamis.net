@@ -86,9 +86,10 @@
           "type": "contentRelationship",
           "contentTypeName": "'articles'",
           "multiple": true,
-          "default": "[]" 
+          "default": "[]"
         }
       ]
     }
-  ]
+  ],
+  "frontMatter.dashboard.openOnStart": true
 }
