@@ -1,0 +1,13 @@
+---
+import ObfuscatedData from './ObfuscatedData.astro';
+import { PageDataType } from '@types';
+
+interface Props {
+  email: string
+  text?: string
+}
+
+const { email, text } = Astro.props;
+---
+
+<ObfuscatedData data={email} text={text} type={PageDataType.EMAIL} />

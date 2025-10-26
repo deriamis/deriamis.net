@@ -1,0 +1,49 @@
+---
+import { generateXorKey, obfuscate } from "@lib/obfuscate/server";
+import { PageDataType } from "@types";
+
+interface Props {
+  /** Obfuscated data */
+  data: string,
+  /** Obfuscated text, if different from data */
+  text?: string
+  /** Data type */
+  type: PageDataType | string
+}
+
+const { data, text, type } = Astro.props;
+
+const xor = generateXorKey();
+const obfuscatedData = obfuscate(data, xor);
+const obfuscatedText = text ? obfuscate(text, xor) : null;
+
+function getNoJsText() {
+  switch (type) {
+    case PageDataType.EMAIL: return 'email address';
+    case PageDataType.PHONE: return 'phone number';
+    case PageDataType.TEXT: return 'text';
+    default: return 'data';
+  }
+}
+---
+
+<obfuscated-data
+  data-obfuscated={obfuscatedData}
+  data-text={obfuscatedText}
+  data-xor={xor}
+  data-type={type}
+>[please wait]</obfuscated-data>
+
+<noscript>
+  <span>[enable JavaScript to view this {getNoJsText()}]</span>
+  <style>
+    obfuscated-data {
+      display: none;
+    }
+  </style>
+</noscript>
+
+<script>
+  import ObfuscatedData from '@lib/obfuscate/client';
+  customElements.define('obfuscated-data', ObfuscatedData);
+</script>

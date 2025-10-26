@@ -1,0 +1,39 @@
+---
+import Section from "./Section.astro";
+import { Image } from "astro:assets";
+import type { AboutProps, HeroProps } from "@types";
+import { isArray } from "effect/Array";
+
+type Props = AboutProps & Pick<HeroProps, "name">;
+let descriptionParagraphs: string[];
+
+const { description, image, name } = Astro.props;
+if (!isArray(description)) {
+  descriptionParagraphs = description.split("\n\n");
+} else {
+  descriptionParagraphs = description;
+}
+---
+
+<Section text="About Me" href="about">
+  <div class="flex flex-col items-center gap-12 md:flex-row md:gap-8">
+    <ul class="list-none">
+      {
+        descriptionParagraphs.map((paragraph) => (
+          <li class="relative mb-3 pl-8 text-base text-neutral before:absolute before:top-1 before:left-0">{paragraph}</li>
+        ))
+      }
+    </ul>
+    <div
+      class="h-80 w-64 flex-shrink-0 rotate-[5deg] bg-white p-4 md:rotate-[7deg]"
+    >
+      <Image
+        class="object-cover"
+        src={image}
+        width="260"
+        height="260"
+        alt={name}
+      />
+    </div>
+  </div>
+</Section>

@@ -1,0 +1,12 @@
+---
+import ObfuscatedData from "./ObfuscatedData.astro";
+import { PageDataType } from "@types";
+
+interface Props {
+  text: string
+}
+
+const { text } = Astro.props;
+---
+
+<ObfuscatedData data={text} type={PageDataType.TEXT} />

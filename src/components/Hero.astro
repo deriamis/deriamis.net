@@ -1,0 +1,23 @@
+---
+import Section from "./Section.astro";
+import type { HeroProps } from "@types";
+type Props = HeroProps;
+
+const { name, specialty, summary } = Astro.props;
+---
+
+ <section id="top">
+  <h1
+    class="mb-1.5 font-serif text-7xl font-bold tracking-tightest text-white sm:text-8xl md:mb-0 md:text-9xl"
+  >
+    {name}
+  </h1>
+  <p
+    class="mb-9 font-serif text-4xl leading-[46px] font-bold tracking-tighter text-primary sm:text-5xl md:text-6xl"
+  >
+    {specialty}
+  </p>
+  <p class="mb-1.5 text-base font-normal text-neutral md:text-lg">
+    {summary}
+  </p>
+  </section>
