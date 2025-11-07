@@ -15,7 +15,7 @@
     "lint": "biome lint .",
     "lint:fix": "biome lint . --fix",
     "clean": "clean-modules -y",
-    "build": "astro build",
+    "build": "pnpm check && astro build --remote",
     "preview": "astro preview",
     "astro": "astro"
   },
