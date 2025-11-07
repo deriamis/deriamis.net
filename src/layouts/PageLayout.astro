@@ -1,5 +1,7 @@
 ---
 import { SITE_CONFIG } from '@config';
+import { Schema } from 'astro-seo-schema';
+import { Seo } from 'astro-seo-meta';
 import '@fontsource/lexend-deca';
 import '@fontsource/iosevka-etoile';
 import 'nf-icons';
@@ -8,6 +10,7 @@ import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 import iosevkaEtoileWoff2 from '@fontsource/iosevka-etoile/files/iosevka-etoile-latin-400-normal.woff2?url';
 import lexendDecaWoff2 from '@fontsource/lexend-deca/files/lexend-deca-latin-400-normal.woff2?url';
+import { GoogleTagManager } from 'astro-gtm';
 
 const {
   title,
@@ -17,39 +20,59 @@ const {
   lang,
   author,
   socialLinks,
-  socialImage,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = SITE_CONFIG;
-
-const ogImgUrl = canonicalURL + socialImage;
 ---
 
 <!doctype html>
 <html lang={lang} class="scroll-pt-16 scroll-smooth">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="author" content={author} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content={ogImgUrl} />
-
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImgUrl} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml">
+    <meta name="generator" content={Astro.generator} />
 
     <link rel="preload" as="font" type="font/woff2" href={iosevkaEtoileWoff2} crossorigin="anonymous" />
     <link rel="preload" as="font" type="font/woff2" href={lexendDecaWoff2} crossorigin="anonymous" />
+
+    <Schema
+      item={{
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Ryan Egesdahl',
+        givenName: 'Ryan',
+        familyName: 'Egesdahl',
+        pronouns: 'he/him/his',
+        url: 'https://deriamis.net',
+        image: 'https://deriamis.net/ryan-big.jpg',
+        alumniOf: {
+          '@type': 'CollegeOrUniversity',
+          name: ['Western Governors University']
+        },
+        knowsAbout: ['Linux', 'Compilers', 'Computer Science', 'Python', 'Bash Scripting', 'Python', 'Software Engineering'],
+      }}
+    />
+
+    <Seo
+      title={title}
+      description={description}
+      icon="/favicon.svg",
+      keywords={['seattle', 'remote', 'linux', 'systems', 'software', 'engineer', 'python', 'bash', 'tutorials', 'website', 'blog', 'deriamis']}
+      colorScheme="dark",
+      robots="index, follow",
+      facebook.url={{
+        url: {canonicalURL},
+        type: "website",
+      }}
+      twitter={{
+        card: "summary_large_image",
+        site: "@deriamis",
+      }}
+    />
   </head>
   <body class="bg-black font-sans">
+    <GoogleTagManager gtmId="GTM-W4LTTL43" />
     <Header siteLogo={siteLogo} navLinks={navLinks} />
     <main class="mx-auto max-w-3xl px-5">
       <slot />

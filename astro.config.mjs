@@ -10,7 +10,10 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import compress from 'astro-compress';
 import critters from 'astro-critters';
+import htmlBeautifier from 'astro-html-beautifier';
 import { astroImageTools } from 'astro-imagetools';
+import linkCard from 'astro-link-card';
+import purgecss from 'astro-purgecss';
 import rehypeKatex from 'rehype-katex';
 import rehypeMathjax from 'rehype-mathjax';
 import remarkDirective from 'remark-directive';
@@ -19,6 +22,10 @@ import remarkMath from 'remark-math';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://deriamis.net',
+
+  build: {
+    inlineStylesheets: 'never',
+  },
 
   integrations: [
     react(),
@@ -29,6 +36,9 @@ export default defineConfig({
     astroImageTools,
     critters(),
     compress(),
+    htmlBeautifier(),
+    linkCard(),
+    purgecss(),
   ],
 
   markdown: {

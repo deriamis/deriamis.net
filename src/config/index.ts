@@ -22,7 +22,6 @@ export const SITE_CONFIG: SiteConfig = {
     { text: 'Github', href: 'https://github.com/deriamis' },
     { text: 'GitLab', href: 'https://gitlab.com/regesdahl' },
   ],
-  socialImage: '/ryan-small.jpg',
   canonicalURL: 'https://deriamis.net',
 };
 
