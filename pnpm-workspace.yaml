@@ -1,4 +1,6 @@
 onlyBuiltDependencies:
   - '@sentry/cli'
   - esbuild
+  - node
+  - rollup
   - sharp

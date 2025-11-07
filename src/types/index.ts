@@ -1,4 +1,4 @@
-export { PageDataType } from "./pagedata";
+export { PageDataType } from './pagedata';
 
 export interface SiteConfig extends HeaderProps {
   title: string;

@@ -1,28 +1,35 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import { astroImageTools } from 'astro-imagetools';
 
-import devapps from '@astrojs/db'
-import fs from 'fs';
+import fs from 'node:fs';
+import devapps from '@astrojs/db';
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
+import sentry from '@sentry/astro';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'astro/config';
+import compress from 'astro-compress';
+import critters from 'astro-critters';
+import { astroImageTools } from 'astro-imagetools';
 import rehypeKatex from 'rehype-katex';
 import rehypeMathjax from 'rehype-mathjax';
 import remarkDirective from 'remark-directive';
 import remarkMath from 'remark-math';
-import sentry from '@sentry/astro';
-import sitemap from '@astrojs/sitemap';
-import tailwindcss from "@tailwindcss/vite";
-
-import critters from 'astro-critters';
-
-import compress from 'astro-compress';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://deriamis.net",
+  site: 'https://deriamis.net',
 
-  integrations: [react(), partytown(), devapps(), sentry(), sitemap(), astroImageTools, critters(), compress()],
+  integrations: [
+    react(),
+    partytown(),
+    devapps(),
+    sentry(),
+    sitemap(),
+    astroImageTools,
+    critters(),
+    compress(),
+  ],
 
   markdown: {
     gfm: true,
@@ -36,8 +43,8 @@ export default defineConfig({
 
   vite: {
     server: {
-      strictPort: true
+      strictPort: true,
     },
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
 });

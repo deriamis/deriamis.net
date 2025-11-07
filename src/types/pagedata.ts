@@ -1,5 +1,5 @@
 export enum PageDataType {
-  EMAIL,
-  PHONE,
-  TEXT
+  EMAIL = 0,
+  PHONE = 1,
+  TEXT = 2,
 }

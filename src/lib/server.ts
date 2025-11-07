@@ -4,11 +4,7 @@ export function generateXorKey() {
 
 export function obfuscate(email: string, xor: number) {
   return btoa(email)
-  .split('')
-  .map((e, i) => (
-      (e.charCodeAt(0) ^ (i % 256)) ^ xor
-    )
-    .toString(16)
-    .padStart(2, '0'))
-  .join('');
+    .split('')
+    .map((e, i) => (e.charCodeAt(0) ^ (i % 256) ^ xor).toString(16).padStart(2, '0'))
+    .join('');
 }

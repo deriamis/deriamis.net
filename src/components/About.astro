@@ -1,15 +1,15 @@
 ---
-import Section from "./Section.astro";
-import { Image } from "astro:assets";
-import type { AboutProps, HeroProps } from "@types";
-import { isArray } from "effect/Array";
+import { Image } from 'astro:assets';
+import type { AboutProps, HeroProps } from '@types';
+import { isArray } from 'effect/Array';
+import Section from './Section.astro';
 
-type Props = AboutProps & Pick<HeroProps, "name">;
+type Props = AboutProps & Pick<HeroProps, 'name'>;
 let descriptionParagraphs: string[];
 
 const { description, image, name } = Astro.props;
 if (!isArray(description)) {
-  descriptionParagraphs = description.split("\n\n");
+  descriptionParagraphs = description.split('\n\n');
 } else {
   descriptionParagraphs = description;
 }

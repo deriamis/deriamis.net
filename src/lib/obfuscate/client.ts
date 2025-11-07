@@ -1,9 +1,9 @@
 import { PageDataType } from '@types';
 
 function hexToBytes(hex: string) {
-  let bytes = [];
+  const bytes = [];
   for (let i = 0; i < hex.length; i += 2) {
-    bytes.push(parseInt(hex.substring(i, i + 2), 16));
+    bytes.push(Number.parseInt(hex.substring(i, i + 2), 16));
   }
   return bytes;
 }
@@ -11,9 +11,7 @@ function hexToBytes(hex: string) {
 export function deobfuscate(obfuscated: string, xor: number) {
   return atob(
     hexToBytes(obfuscated)
-      .map((e, i) => String.fromCharCode(
-        (e ^ (i % 256)) ^ xor
-      ))
+      .map((e, i) => String.fromCharCode(e ^ (i % 256) ^ xor))
       .join('')
   );
 }
@@ -29,7 +27,7 @@ export type ElementFunctionRegistry = Record<string, ElementFunction>;
  */
 declare global {
   interface Window {
-    astroObfuscateCustomElements: ElementFunctionRegistry
+    astroObfuscateCustomElements: ElementFunctionRegistry;
   }
 }
 if (!('astroObfuscateCustomElements' in window)) {
@@ -39,20 +37,19 @@ if (!('astroObfuscateCustomElements' in window)) {
 
 export default class ObfuscatedData extends HTMLElement {
   connectedCallback() {
-    const xor = parseInt(this.dataset.xor as string, 10);
+    const xor = Number.parseInt(this.dataset.xor as string, 10);
 
-    let deobfuscatedData: string,
-        deobfuscatedText: string | null;
+    let deobfuscatedData: string;
+    let deobfuscatedText: string | null;
 
     try {
       deobfuscatedData = deobfuscate(this.dataset.obfuscated as string, xor);
-      deobfuscatedText = this.dataset.text ?
-        deobfuscate(this.dataset.text as string, xor) : null;
+      deobfuscatedText = this.dataset.text ? deobfuscate(this.dataset.text as string, xor) : null;
     } catch (e) {
       this.replaceChildren(this.#createErrorElement());
       throw e;
     }
-    
+
     setTimeout(() => {
       const elem = this.#createElement(deobfuscatedData, deobfuscatedText);
       this.replaceChildren(elem || this.#createErrorElement());
@@ -66,26 +63,26 @@ export default class ObfuscatedData extends HTMLElement {
   }
 
   static #ELEMENT_FUNCTIONS: ElementFunctionRegistry = {
-      [PageDataType.EMAIL.toString()]: (deobfuscated, text) => {
-        const elem = document.createElement('a');
-        elem.href = `mailto:${deobfuscated}`;
-        elem.innerText = text || deobfuscated;
-        return elem;
-      },
+    [PageDataType.EMAIL.toString()]: (deobfuscated, text) => {
+      const elem = document.createElement('a');
+      elem.href = `mailto:${deobfuscated}`;
+      elem.innerText = text || deobfuscated;
+      return elem;
+    },
 
-      [PageDataType.PHONE.toString()]: (deobfuscated, text = deobfuscated) => {
-        const elem = document.createElement('a');
-        elem.href = `tel:${deobfuscated}`;
-        elem.innerText = text || deobfuscated;
-        return elem;
-      },
+    [PageDataType.PHONE.toString()]: (deobfuscated, text = deobfuscated) => {
+      const elem = document.createElement('a');
+      elem.href = `tel:${deobfuscated}`;
+      elem.innerText = text || deobfuscated;
+      return elem;
+    },
 
-      [PageDataType.TEXT.toString()]: (deobfuscated) => {
-        const elem = document.createElement('span');
-        elem.innerText = deobfuscated;
-        return elem;
-      }
-    }
+    [PageDataType.TEXT.toString()]: (deobfuscated) => {
+      const elem = document.createElement('span');
+      elem.innerText = deobfuscated;
+      return elem;
+    },
+  };
 
   static #isRegistered(id: string) {
     return id in ObfuscatedData.#ELEMENT_FUNCTIONS || id in window.astroObfuscateCustomElements;
@@ -98,7 +95,6 @@ export default class ObfuscatedData extends HTMLElement {
 
     window.astroObfuscateCustomElements[id] = fn;
   }
-
 
   #createElement(deobfuscated: string, text?: string | null) {
     if (!this.dataset.type) return;

@@ -1,8 +1,9 @@
 ---
-import Section from "./Section.astro";
-import type { ContactProps } from "@types";
-import ObfuscatedEmail from "./ObfuscatedEmail.astro";
-import ObfuscatedPhone from "./ObfuscatedPhone.astro";
+import type { ContactProps } from '@types';
+import ObfuscatedEmail from './ObfuscatedEmail.astro';
+import ObfuscatedPhone from './ObfuscatedPhone.astro';
+import Section from './Section.astro';
+
 type Props = ContactProps;
 
 const { email, phone } = Astro.props;

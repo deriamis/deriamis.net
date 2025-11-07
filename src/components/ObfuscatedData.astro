@@ -1,14 +1,14 @@
 ---
-import { generateXorKey, obfuscate } from "@lib/obfuscate/server";
-import { PageDataType } from "@types";
+import { generateXorKey, obfuscate } from '@lib/obfuscate/server';
+import { PageDataType } from '@types';
 
 interface Props {
   /** Obfuscated data */
-  data: string,
+  data: string;
   /** Obfuscated text, if different from data */
-  text?: string
+  text?: string;
   /** Data type */
-  type: PageDataType | string
+  type: PageDataType | string;
 }
 
 const { data, text, type } = Astro.props;
@@ -19,10 +19,14 @@ const obfuscatedText = text ? obfuscate(text, xor) : null;
 
 function getNoJsText() {
   switch (type) {
-    case PageDataType.EMAIL: return 'email address';
-    case PageDataType.PHONE: return 'phone number';
-    case PageDataType.TEXT: return 'text';
-    default: return 'data';
+    case PageDataType.EMAIL:
+      return 'email address';
+    case PageDataType.PHONE:
+      return 'phone number';
+    case PageDataType.TEXT:
+      return 'text';
+    default:
+      return 'data';
   }
 }
 ---
