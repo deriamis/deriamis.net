@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 import type { ProjectProps } from "@types";
 
 interface Props {
-  projects?: ProjectProps[] | undefined;
+  projects?: ProjectProps[];
 }
 
 const { projects } = Astro.props;
@@ -16,7 +16,7 @@ const { projects } = Astro.props;
   ) : (
     <Section text="Featured Projects" href="projects">
       {projects.map(
-        ({ name, summary, image, linkPreview, linkSource }, index) => {
+        ({ name, summary, image, linkPreview, linkSource, linkDocs }, index) => {
           const top = 98 + index * 40;
           return (
             <div
@@ -39,6 +39,17 @@ const { projects } = Astro.props;
                         class="after:relative after:bottom-[-5px] after:content-[url(/external.svg)] hover:underline"
                       >
                         Source
+                      </a>
+                    )}
+                    {!linkDocs ? (
+                      ""
+                    ) : (
+                      <a
+                        href={linkDocs}
+                        target="_blank"
+                        class="after:relative after:bottom-[-5px] after:content-[url(/external.svg)] hover:underline"
+                      >
+                        Documentation
                       </a>
                     )}
                     {!linkPreview ? (

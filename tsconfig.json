@@ -9,7 +9,9 @@
     "public",
   ],
   "compilerOptions": {
+    "allowJs": true,
     "baseUrl": ".",
+    "forceConsistentCasingInFileNames": true,
     "paths": {
       "@lib/*": ["src/lib/*"],
       "@icons/*": ["src/icons/*"],
@@ -20,7 +22,6 @@
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "strictNullChecks": true,
-    "allowJs": true
+    "strictNullChecks": true
   }
 }

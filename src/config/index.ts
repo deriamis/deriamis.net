@@ -23,16 +23,18 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "Github", href: "https://github.com/deriamis" },
     { text: "GitLab", href: "https://gitlab.com/regesdahl" },
   ],
-  socialImage: "/zen-og.png",
+  socialImage: "/ryan-small.jpg",
   canonicalURL: "https://deriamis.net",
 };
 
 export const SITE_CONTENT: SiteContent = {
   hero: {
     name: "Ryan Egesdahl",
-    specialty: "Software and Systems Engineer",
+    namePronunciation: "ˈɹaiɘn ˈɛɡɪsˌdɐl",
+    namePronunciationAudio: "/name.mp3",
+    specialty: "Software, Platform, and Linux Systems Engineer",
     summary:
-      "Software and Systems Engineer based in Seattle, USA. I specialize in systems software, platform tooling, automation, and large-scale design and development.",
+      "I'm a Software, Platform, and Linux systems Engineer based in Seattle, USA. I specialize in Linux systems software, platform tooling and toolchains, automation, and large-scale design and development.",
   },
   contact: {
     email: "me@ryanegesdahl.com",
@@ -110,6 +112,24 @@ export const SITE_CONTENT: SiteContent = {
       ]
     }
   ],
+  /*
+  projects: [
+    {
+      name: "GeekVim",
+      summary: "A NeoVim configuration for developer geeks.",
+      linkDocs: "https://geekvim.org",
+      linkSource: "https://github.com/GeekVim",
+      image: "/geekvim.png",
+    },
+    {
+      name: "ExecJail",
+      summary: "A lightweight Linux sandboxing tool for running untrusted binaries.",
+      linkDocs: "https://execjail.org",
+      linkSource: "https://github.com/HanamiToolworks/execjail",
+      image: "/execjail.png",
+    }
+  ],
+  */
   about: {
     description: [
     `Hello, I'm Ryan Egesdahl. I'm an experienced and principled Software and Systems engineer who loves to make "impossible" things happen. I have a strong background in systems programming, including Linux kernel syscalls, software development toolchains, build systems, systems software debugging, and Linux security tools. In addition, I have several years of experience as a systems engineer designing, deploying, and maintaining large-scale architectures as well as infrastructure automation and monitoring.`,

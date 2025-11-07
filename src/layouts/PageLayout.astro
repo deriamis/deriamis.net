@@ -1,10 +1,13 @@
 ---
-import Header from "@components/Header.astro";
+import { SITE_CONFIG } from "@config";
 import "@fontsource/lexend-deca";
 import "@fontsource/iosevka-etoile";
 import "nf-icons";
-import { SITE_CONFIG } from "@config";
+
 import Footer from "@components/Footer.astro";
+import Header from "@components/Header.astro";
+import iosevkaEtoileWoff2 from "@fontsource/iosevka-etoile/files/iosevka-etoile-latin-400-normal.woff2?url";
+import lexendDecaWoff2 from "@fontsource/lexend-deca/files/lexend-deca-latin-400-normal.woff2?url";
 
 const {
   title,
@@ -42,6 +45,9 @@ const ogImgUrl = canonicalURL + socialImage;
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImgUrl} />
+
+    <link rel="preload" as="font" type="font/woff2" href={iosevkaEtoileWoff2} crossorigin="anonymous" />
+    <link rel="preload" as="font" type="font/woff2" href={lexendDecaWoff2} crossorigin="anonymous" />
   </head>
   <body class="bg-black font-sans">
     <Header siteLogo={siteLogo} navLinks={navLinks} />

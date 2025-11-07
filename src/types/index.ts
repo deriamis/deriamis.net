@@ -20,6 +20,8 @@ export interface SiteContent {
 
 export interface HeroProps {
   name: string;
+  namePronunciation?: string;
+  namePronunciationAudio?: string;
   specialty: string;
   summary: string;
 }
@@ -43,6 +45,7 @@ export interface ProjectProps {
   image: string;
   linkPreview?: string;
   linkSource?: string;
+  linkDocs?: string;
 }
 
 export interface AboutProps {
