@@ -33,7 +33,7 @@
     "@types/lodash.debounce": "^4.0.9",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "astro": "5.15.1",
+    "astro": "5.15.6",
     "astro-compress": "^2.3.8",
     "astro-critters": "^2.2.1",
     "astro-gtm": "^0.1.0",
