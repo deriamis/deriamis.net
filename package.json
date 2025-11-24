@@ -28,7 +28,7 @@
     "@fontsource/iosevka-etoile": "^5.2.5",
     "@fontsource/lexend-deca": "^5.2.10",
     "@mathjax/src": "^4.0.0",
-    "@sentry/astro": "^10.17.0",
+    "@sentry/astro": "^10.27.0",
     "@tailwindcss/vite": "^4.1.16",
     "@types/lodash.debounce": "^4.0.9",
     "@types/react": "^19.2.0",
